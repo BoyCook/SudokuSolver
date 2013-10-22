@@ -1,4 +1,4 @@
-package test.scala.org.cccs.sudoku
+package org.cccs.sudoku
 
 /**
  * User: boycook
@@ -7,14 +7,15 @@ package test.scala.org.cccs.sudoku
  */
 
 import org.scalatest.FunSuite
-
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
+import org.cccs.sudoku.Solver
 
 @RunWith(classOf[JUnitRunner])
 class TestSolver extends FunSuite {
 
   test("should work") {
+    new Solver
     assert(1 === 1)
   }
 }
