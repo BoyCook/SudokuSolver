@@ -1,0 +1,41 @@
+package org.cccs.sudoku
+
+/**
+ * User: boycook
+ * Date: 22/10/2013
+ * Time: 18:33
+ */
+class Puzzle {
+  /*
+      9 * 9 grid made up of
+      3 * 3 grid * 3 * 3
+   */
+  val data = Array.ofDim[Int](9, 9)
+
+  def set(x: Int, y: Int, v: Array[Int]) = {
+    val x1 = x * 3
+    val y1 = y * 3
+    data(x1)(y1) = v(0)
+    data(x1 + 1)(y1) = v(1)
+    data(x1 + 2)(y1) = v(2)
+    data(x1)(y1 + 1) = v(3)
+    data(x1 + 1)(y1 + 1) = v(4)
+    data(x1 + 2)(y1 + 1) = v(5)
+    data(x1)(y1 + 2) = v(6)
+    data(x1 + 1)(y1 + 2) = v(7)
+    data(x1 + 2)(y1 + 2) = v(8)
+    data
+  }
+
+  def set(x: Int, y: Int, v: Int) = data(x)(y) = v
+
+  override def toString = {
+    val temp = "%s %s %s \n" +
+               "%s %s %s \n" +
+               "%s %s %s \n"
+
+    format(temp, data(2)(0), data(2)(1), data(2)(2),
+                 data(1)(0), data(1)(1), data(1)(2),
+                 data(0)(0), data(0)(1), data(0)(2))
+  }
+}

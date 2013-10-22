@@ -9,7 +9,7 @@ package org.cccs.sudoku
 import org.scalatest.FunSuite
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import org.cccs.sudoku.Solver
+import org.cccs.sudoku.Puzzle
 
 @RunWith(classOf[JUnitRunner])
 class TestSolver extends FunSuite {
@@ -19,8 +19,8 @@ class TestSolver extends FunSuite {
   }
 
   test("setup data") {
-    val solver = new Solver
-    val data = solver.set(0, 0, Array(1, 2, 3, 4, 5, 6, 7, 8, 9))
-    println(data)
+    val puzzle = new Puzzle
+    puzzle.set(0, 0, Array(1, 2, 3, 4, 5, 6, 7, 8, 9))
+    println(puzzle)
   }
 }
