@@ -5,6 +5,16 @@ package test.scala.org.cccs.sudoku
  * Date: 22/10/2013
  * Time: 16:48
  */
-class TestSolver {
 
+import org.scalatest.FunSuite
+
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
+
+@RunWith(classOf[JUnitRunner])
+class TestSolver extends FunSuite {
+
+  test("should work") {
+    assert(1 === 1)
+  }
 }

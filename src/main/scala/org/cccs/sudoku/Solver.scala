@@ -7,7 +7,6 @@ package main.scala.org.cccs.sudoku
  */
 class Solver {
   val data = Array.ofDim[Int](9, 9)
-  data(1, 1) = (1, 2)
 }
 
 
