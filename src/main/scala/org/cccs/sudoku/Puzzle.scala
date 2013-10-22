@@ -29,13 +29,20 @@ class Puzzle {
 
   def set(x: Int, y: Int, v: Int) = data(x)(y) = v
 
-  override def toString = {
-    val temp = "%s %s %s \n" +
-               "%s %s %s \n" +
-               "%s %s %s \n"
+  val template = "%s %s %s \n" +
+                 "%s %s %s \n" +
+                 "%s %s %s \n"
 
-    format(temp, data(2)(0), data(2)(1), data(2)(2),
-                 data(1)(0), data(1)(1), data(1)(2),
-                 data(0)(0), data(0)(1), data(0)(2))
+  private def boxToString(x: Int, y: Int) = {
+    val x1 = x * 3
+    val y1 = y * 3
+    format(template,
+      data(x1 + 2)(y1), data(x1 + 2)(y1 + 1), data(x1 + 2)(y1 + 2),
+      data(x1 + 1)(y1), data(x1 + 1)(y1 + 1), data(x1 + 1)(y1 + 2),
+      data(x1)(y1), data(x1)(y1 + 1), data(x1)(y1 + 2))
+  }
+
+  override def toString = {
+    boxToString(0, 0)
   }
 }
