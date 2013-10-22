@@ -15,7 +15,12 @@ import org.cccs.sudoku.Solver
 class TestSolver extends FunSuite {
 
   test("should work") {
-    new Solver
     assert(1 === 1)
+  }
+
+  test("setup data") {
+    val solver = new Solver
+    val data = solver.set(0, 0, Array(1, 2, 3, 4, 5, 6, 7, 8, 9))
+    println(data)
   }
 }
