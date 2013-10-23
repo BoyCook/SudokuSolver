@@ -5,8 +5,11 @@ package org.cccs.sudoku
  * Date: 22/10/2013
  * Time: 16:37
  */
-class Solver {
+class Solver(puzzle: Puzzle) {
 
+  def solve = {
+
+  }
 }
 
 

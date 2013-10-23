@@ -9,7 +9,6 @@ package org.cccs.sudoku
 import org.scalatest.FunSuite
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import org.cccs.sudoku.Puzzle
 
 @RunWith(classOf[JUnitRunner])
 class TestPuzzle extends FunSuite {
@@ -27,6 +26,7 @@ class TestPuzzle extends FunSuite {
     puzzle.set(2, 2, Array(1, 2, 3, 4, 9, 6, 7, 8, 9))
     println(puzzle)
 
+    assert(puzzle.get(0,0) === 1)
     assert(puzzle.get(1,1) === 1)
     assert(puzzle.get(4,1) === 2)
     assert(puzzle.get(7,1) === 3)
@@ -36,5 +36,6 @@ class TestPuzzle extends FunSuite {
     assert(puzzle.get(1,7) === 7)
     assert(puzzle.get(4,7) === 8)
     assert(puzzle.get(7,7) === 9)
+    assert(puzzle.get(8,8) === 9)
   } 
 }
