@@ -24,7 +24,6 @@ class Puzzle {
     data(x1)(y1 + 2) = v(6)
     data(x1 + 1)(y1 + 2) = v(7)
     data(x1 + 2)(y1 + 2) = v(8)
-    data
   }
 
   def set(x: Int, y: Int, v: Int) = data(x)(y) = v
@@ -37,12 +36,15 @@ class Puzzle {
     val x1 = x * 3
     val y1 = y * 3
     format(template,
-      data(x1 + 2)(y1), data(x1 + 2)(y1 + 1), data(x1 + 2)(y1 + 2),
-      data(x1 + 1)(y1), data(x1 + 1)(y1 + 1), data(x1 + 1)(y1 + 2),
-      data(x1)(y1), data(x1)(y1 + 1), data(x1)(y1 + 2))
+      data(x1)(y1 + 2), data(x1 + 2)(y1 + 2), data(x1 + 2)(y1 + 2),
+      data(x1)(y1 + 1), data(x1 + 1)(y1 + 1), data(x1 + 2)(y1 + 1),
+      data(x1)(y1), data(x1 + 1)(y1), data(x1 + 2)(y1))
   }
 
   override def toString = {
-    boxToString(0, 0)
+    format(template,
+        boxToString(0, 0), boxToString(0, 1), boxToString(0, 2),
+        boxToString(1, 0), boxToString(1, 1), boxToString(1, 2),
+        boxToString(2, 0), boxToString(2, 1), boxToString(2, 2))
   }
 }
