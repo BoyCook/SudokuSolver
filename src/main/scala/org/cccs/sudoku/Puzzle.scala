@@ -12,7 +12,13 @@ class Puzzle {
    */
   val data = Array.ofDim[Int](9, 9)
 
-  //TODO: use recursive function to do this
+  /**
+   * Set the 9 squares for a small box
+   * @param xb position of box
+   * @param yb position of box
+   * @param v data set built
+   * @return
+   */
   def set(xb: Int, yb: Int, v: Array[Int]) = {
     val x = xb * 3
     val y = yb * 3
@@ -23,6 +29,21 @@ class Puzzle {
       else loop(xc + 1, yc, n + 1)
     }
     loop(0, 0, 0)
+  }
+
+  /**
+   * Set the 9 squares for a row
+   * @param y row number
+   * @param v data built
+   * @return
+   */
+  def set(y: Int, v: Array[Int]) = {
+    def loop(x: Int): Array[Int] = {
+      data(x)(y) = v(x)
+      if (x == 8) v
+      else loop(x+1)
+    }
+    loop(0)
   }
 
   def get(x: Int, y: Int): Int = data(x)(y)
