@@ -13,26 +13,16 @@ class Puzzle {
   val data = Array.ofDim[Int](9, 9)
 
   //TODO: use recursive function to do this
-  def set(x: Int, y: Int, v: Array[Int]) = {
-    val x1 = x * 3
-    val y1 = y * 3
-    data(x1)(y1) = v(0)
-    data(x1 + 1)(y1) = v(1)
-    data(x1 + 2)(y1) = v(2)
-    data(x1)(y1 + 1) = v(3)
-    data(x1 + 1)(y1 + 1) = v(4)
-    data(x1 + 2)(y1 + 1) = v(5)
-    data(x1)(y1 + 2) = v(6)
-    data(x1 + 1)(y1 + 2) = v(7)
-    data(x1 + 2)(y1 + 2) = v(8)
-
-//    def loop(xc: Int, yc: Int, n: Int): Array[Int] = {
-//      data(x + xc)(y + yc) = v(n)
-//      if (n == 8) v
-//      else if (xc == 2) loop(0, yc + 1, n + 1)
-//      else loop(xc + 1, yc, n + 1)
-//    }
-//    loop(0, 0, 0)
+  def set(xb: Int, yb: Int, v: Array[Int]) = {
+    val x = xb * 3
+    val y = yb * 3
+    def loop(xc: Int, yc: Int, n: Int): Array[Int] = {
+      data(x + xc)(y + yc) = v(n)
+      if (n == 8) v
+      else if (xc == 2) loop(0, yc + 1, n + 1)
+      else loop(xc + 1, yc, n + 1)
+    }
+    loop(0, 0, 0)
   }
 
   def get(x: Int, y: Int): Int = data(x)(y)
