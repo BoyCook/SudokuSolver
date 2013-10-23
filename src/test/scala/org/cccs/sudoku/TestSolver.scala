@@ -16,7 +16,8 @@ class TestSolver extends FunSuite {
 
   test("should work") {
     new TestData {
-      val solver = new Solver(puzzle1)
+      val solver = new Solver(puzzle2)
+      solver.solve
       assert(1 === 1)
     }
   }
