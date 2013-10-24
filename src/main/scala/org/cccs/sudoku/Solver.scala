@@ -22,48 +22,18 @@ class Solver(puzzle: Puzzle) {
   }
 
   private def solveSquare(x: Int, y: Int): Boolean = {
-    def isInBox(n: Int) = {
-      def getBox(v: Int) = (v + 1) / 3 + {
-        if (v % 3 > 0) 1 else 0
-      }
-      val xs = getBox(x)
-      val ys = getBox(y)
-      def loop(xc: Int, yc: Int, found: Boolean): Boolean = {
-        val s = puzzle.get(xs + xc, ys + yc)
-        if (xc == 2 && yc == 2) found
-        else if (xc == 2) loop(0, yc + 1, s == n)
-        else loop(xc + 1, yc, s == n)
-      }
-      loop(0, 0, found = false)
-    }
-
-    def isInRow(n: Int): Boolean = {
-      def loop(x: Int, found: Boolean): Boolean = {
-        if (found || x == 9) found
-        else if (x < 8) loop(x + 1, puzzle.get(x, y) == n)
-        else false
-      }
-      loop(0, found = false)
-    }
-
-    def isInColumn(n: Int): Boolean = {
-      def loop(y: Int, found: Boolean): Boolean = {
-        if (found || y == 9) found
-        else if (y < 8) loop(y + 1, puzzle.get(x, y) == n)
-        else false
-      }
-      loop(0, found = false)
-    }
-
-    def isFree(n: Int): Boolean = {
-      !isInRow(n) && !isInColumn(n) && !isInBox(n)
+    def isFree(i: Int, n: Int): Boolean = {
+      i < 9 && (puzzle.get(x, i) == n ||
+                puzzle.get(i, y) == n ||
+                puzzle.get(x/3*3 + i/3, y/3*3 + i%3) == n ||
+                isFree(i + 1, n))
     }
 
     val s = puzzle.get(x, y)
     if (s == 0) {
       def loop(n: Int, acc: List[Int]): List[Int] = {
         if (n == 10) acc
-        else if (isFree(n)) loop(n + 1, acc ++ List(n))
+        else if (!isFree(0, n)) loop(n + 1, acc ++ List(n))
         else loop(n + 1, acc)
       }
       val free = loop(1, List())
