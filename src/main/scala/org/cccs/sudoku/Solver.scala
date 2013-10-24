@@ -19,8 +19,12 @@ class Solver(puzzle: Puzzle) {
 
   private def solveSquare(x: Int, y: Int): Boolean = {
     def isInBox(n: Int) = {
-      val xs = x * 3
-      val ys = y * 3
+      def getBox(v: Int) = (v + 1) / 3 + {
+        if (v % 3 > 0) 1 else 0
+      }
+      val xs = getBox(x)
+      val ys = getBox(y)
+//      println(format("x = '%d' y = '%d' | xs = '%d' ys = '%d'", x, y, xs, ys))
       def loop(xc: Int, yc: Int, found: Boolean): Boolean = {
         val s = puzzle.get(xs + xc, ys + yc)
         if (xc == 2 && yc == 2) found
@@ -32,7 +36,7 @@ class Solver(puzzle: Puzzle) {
 
     def isInRow(n: Int): Boolean = {
       def loop(x: Int, found: Boolean): Boolean = {
-        if (found || x == 8) found
+        if (found || x == 9) found
         else if (x < 8) loop(x + 1, puzzle.get(x, y) == n)
         else false
       }
@@ -41,7 +45,7 @@ class Solver(puzzle: Puzzle) {
 
     def isInColumn(n: Int): Boolean = {
       def loop(y: Int, found: Boolean): Boolean = {
-        if (found || y == 8) found
+        if (found || y == 9) found
         else if (y < 8) loop(y + 1, puzzle.get(x, y) == n)
         else false
       }
@@ -49,13 +53,13 @@ class Solver(puzzle: Puzzle) {
     }
 
     def isFree(n: Int): Boolean = {
-      !isInRow(n) && !isInColumn(n) //&& !isInBox(n)
+      !isInRow(n) && !isInColumn(n) && !isInBox(n)
     }
 
     val s = puzzle.get(x, y)
     if (s == 0) {
       def loop(n: Int, acc: List[Int]): List[Int] = {
-        if (n == 9) acc
+        if (n == 10) acc
         else if (isFree(n)) loop(n + 1, acc ++ List(n))
         else loop(n + 1, acc)
       }
@@ -65,7 +69,7 @@ class Solver(puzzle: Puzzle) {
 
       if (free.length == 1) puzzle.set(x, y, free(0))
 
-      true
+      free.length > 0
     } else true
   }
 }
