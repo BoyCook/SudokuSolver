@@ -8,13 +8,17 @@ package org.cccs.sudoku
 class Solver(puzzle: Puzzle) {
 
   def solve = {
-    def loop(x: Int, y: Int): Boolean = {
+    def loop(x: Int, y: Int, cnt: Int): Boolean = {
       solveSquare(x, y)
-      if (x == 8 && y == 8) false
-      else if (x == 8) loop(0, y + 1)
-      else loop(x + 1, y)
+      if (x == 8 && y == 8 && cnt == 5) true
+      else if (x == 8 && y == 8 && cnt < 5) {
+        println("-----------------------------------------------------")
+        loop(0, 0, cnt + 1)
+      }
+      else if (x == 8) loop(0, y + 1, cnt)
+      else loop(x + 1, y, cnt)
     }
-    loop(0, 0)
+    loop(0, 0, 0)
   }
 
   private def solveSquare(x: Int, y: Int): Boolean = {
@@ -24,7 +28,6 @@ class Solver(puzzle: Puzzle) {
       }
       val xs = getBox(x)
       val ys = getBox(y)
-//      println(format("x = '%d' y = '%d' | xs = '%d' ys = '%d'", x, y, xs, ys))
       def loop(xc: Int, yc: Int, found: Boolean): Boolean = {
         val s = puzzle.get(xs + xc, ys + yc)
         if (xc == 2 && yc == 2) found
