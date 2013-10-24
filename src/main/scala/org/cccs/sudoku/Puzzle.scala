@@ -46,6 +46,8 @@ class Puzzle {
     loop(0)
   }
 
+  def set(x: Int, y: Int, v: Int) = data(x)(y) = v
+
   def get(x: Int, y: Int): Int = data(x)(y)
 
   private def boxToString() = {

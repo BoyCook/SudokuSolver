@@ -27,7 +27,7 @@ class Solver(puzzle: Puzzle) {
         else if (xc == 2) loop(0, yc + 1, s == n)
         else loop(xc + 1, yc, s == n)
       }
-      loop(0, 0, false)
+      loop(0, 0, found = false)
     }
 
     def isInRow(n: Int): Boolean = {
@@ -48,13 +48,25 @@ class Solver(puzzle: Puzzle) {
       loop(0, found = false)
     }
 
-    def estimate(n: Int, free: Array[Int]): Boolean = {
-      println(format("Estimating for [%d] [%s] [%s] [%s]", n, isInRow(n), isInColumn(n), isInBox(n)))
-      false
+    def isFree(n: Int): Boolean = {
+      !isInRow(n) && !isInColumn(n) //&& !isInBox(n)
     }
 
     val s = puzzle.get(x, y)
-    if (s == 0) estimate(1, Array()) else true
+    if (s == 0) {
+      def loop(n: Int, acc: List[Int]): List[Int] = {
+        if (n == 9) acc
+        else if (isFree(n)) loop(n + 1, acc ++ List(n))
+        else loop(n + 1, acc)
+      }
+      val free = loop(1, List())
+
+      println(format("Free for (%d)(%d) - [%s]", x, y, free))
+
+      if (free.length == 1) puzzle.set(x, y, free(0))
+
+      true
+    } else true
   }
 }
 

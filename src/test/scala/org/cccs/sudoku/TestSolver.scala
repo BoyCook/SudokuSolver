@@ -9,7 +9,6 @@ package org.cccs.sudoku
 import org.scalatest.FunSuite
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import org.cccs.sudoku.Solver
 
 @RunWith(classOf[JUnitRunner])
 class TestSolver extends FunSuite {
@@ -18,7 +17,8 @@ class TestSolver extends FunSuite {
     new TestData {
       val solver = new Solver(puzzle2)
       solver.solve
-      assert(1 === 1)
+      println("---------------------------")
+      solver.solve
     }
   }
 }
