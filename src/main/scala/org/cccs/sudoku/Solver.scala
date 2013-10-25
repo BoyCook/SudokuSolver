@@ -49,7 +49,6 @@ class Solver(puzzle: Puzzle) {
       else if (!isNotFree(0, n)) check(n + 1, acc ++ List(n))
       else check(n + 1, acc)
     }
-
     if (puzzle.get(x, y) == 0) check(1, List()) else true
   }
 }
