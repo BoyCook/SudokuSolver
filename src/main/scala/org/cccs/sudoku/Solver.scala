@@ -34,6 +34,12 @@ class Solver(puzzle: Puzzle) {
                 isNotFree(i + 1, n))
     }
 
+    /**
+     * Check numbers 1-9 to see if they can be used
+     * @param n value to check
+     * @param acc list of free values to use
+     * @return
+     */
     def check(n: Int, acc: List[Int]): Boolean = {
       if (n == 10 && acc.length == 1) {
         puzzle.set(x, y, acc(0))
