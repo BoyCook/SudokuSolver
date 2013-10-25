@@ -12,6 +12,24 @@ class Puzzle {
    */
   val data = Array.ofDim[Int](9, 9)
 
+  def set(x: Int, y: Int, v: Int) = data(x)(y) = v
+
+  def get(x: Int, y: Int): Int = data(x)(y)
+
+  /**
+   * Set the 9 squares for a row
+   * @param y row number
+   * @param v data built
+   * @return
+   */
+  def set(y: Int, v: Array[Int]) = {
+    def loop(x: Int): Array[Int] = {
+      data(x)(y) = v(x)
+      if (x == 8) v else loop(x + 1)
+    }
+    loop(0)
+  }
+
   /**
    * Set the 9 squares for a small box
    * @param xb position of box
@@ -30,25 +48,6 @@ class Puzzle {
     }
     loop(0, 0, 0)
   }
-
-  /**
-   * Set the 9 squares for a row
-   * @param y row number
-   * @param v data built
-   * @return
-   */
-  def set(y: Int, v: Array[Int]) = {
-    def loop(x: Int): Array[Int] = {
-      data(x)(y) = v(x)
-      if (x == 8) v
-      else loop(x + 1)
-    }
-    loop(0)
-  }
-
-  def set(x: Int, y: Int, v: Int) = data(x)(y) = v
-
-  def get(x: Int, y: Int): Int = data(x)(y)
 
   private def boxToString() = {
     val h = "\n ---------------------\n"
