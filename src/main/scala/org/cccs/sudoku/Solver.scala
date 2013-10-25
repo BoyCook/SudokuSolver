@@ -6,7 +6,10 @@ package org.cccs.sudoku
  * Time: 16:37
  */
 class Solver(puzzle: Puzzle) {
-
+  /**
+   * Check each square in the 9*9 grid
+   * @return
+   */
   def solve = {
     def loop(x: Int, y: Int, cnt: Int): Boolean = {
       solveSquare(x, y)
