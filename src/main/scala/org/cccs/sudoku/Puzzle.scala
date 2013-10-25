@@ -41,7 +41,7 @@ class Puzzle {
     def loop(x: Int): Array[Int] = {
       data(x)(y) = v(x)
       if (x == 8) v
-      else loop(x+1)
+      else loop(x + 1)
     }
     loop(0)
   }
@@ -51,12 +51,12 @@ class Puzzle {
   def get(x: Int, y: Int): Int = data(x)(y)
 
   private def boxToString() = {
+    val h = "\n ---------------------\n"
     def loop(x: Int, y: Int, txt: String): String = {
-//      if (x != 0 && x!= 8 && x % 3 == 0) "------------------"
-//      if (y != 0 && y!= 8 && y % 3 == 0) " | "
-
       if (x == 8 && y == 0) txt + " " + data(x)(y)
+      else if (x == 8 && y % 3 == 0) loop(0, y - 1, txt + " " + data(x)(y) + h)
       else if (x == 8) loop(0, y - 1, txt + " " + data(x)(y) + "\n")
+      else if (x > 0 && x % 3 == 0) loop(x + 1, y, txt + " | " + data(x)(y))
       else loop(x + 1, y, txt + " " + data(x)(y))
     }
     loop(0, 8, "")
