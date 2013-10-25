@@ -11,16 +11,14 @@ class Solver(puzzle: Puzzle) {
    * @return
    */
   def solve = {
-    def loop(x: Int, y: Int, cnt: Int): Boolean = {
-      solveSquare(x, y)
-      if (x == 8 && y == 8 && cnt == 10) true
-      else if (x == 8 && y == 8 && cnt < 10) {
-        loop(0, 0, cnt + 1)
-      }
-      else if (x == 8) loop(0, y + 1, cnt)
-      else loop(x + 1, y, cnt)
+    def loop(x: Int, y: Int, solved: Boolean): Boolean = {
+      val result = solveSquare(x, y)
+      if (x == 8 && y == 8 && solved) true
+      else if (x == 8 && y == 8 && !solved) loop(0, 0, true)
+      else if (x == 8) loop(0, y + 1, if (!result) false else solved)
+      else loop(x + 1, y, if (!result) false else solved)
     }
-    loop(0, 0, 0)
+    loop(0, 0, true)
   }
 
   private def solveSquare(x: Int, y: Int): Boolean = {
