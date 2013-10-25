@@ -28,4 +28,46 @@ trait TestData {
   puzzle2.set(1, Array(8, 0, 0, 2, 0, 3, 0, 0, 9))
   puzzle2.set(0, Array(0, 0, 5, 0, 1, 0, 3, 0, 0))
 
+  val puzzle3 = new Puzzle
+  puzzle3.set(8, Array(2, 0, 0, 0, 8, 0, 3, 0, 0))
+  puzzle3.set(7, Array(0, 6, 0, 0, 7, 0, 0, 8, 4))
+  puzzle3.set(6, Array(0, 3, 0, 5, 0, 0, 2, 0, 9))
+  puzzle3.set(5, Array(0, 0, 0, 1, 0, 5, 4, 0, 8))
+  puzzle3.set(4, Array(0, 0, 0, 0, 0, 0, 0, 0, 0))
+  puzzle3.set(3, Array(4, 0, 2, 7, 0, 6, 0, 0, 0))
+  puzzle3.set(2, Array(3, 0, 1, 0, 0, 7, 0, 4, 0))
+  puzzle3.set(1, Array(7, 2, 0, 0, 4, 0, 0, 6, 0))
+  puzzle3.set(0, Array(0, 0, 4, 0, 1, 0, 0, 0, 3))
+
+  val puzzle4 = new Puzzle
+  puzzle4.set(8, Array(0, 0, 0, 0, 0, 0, 9, 0, 7))
+  puzzle4.set(8, Array(0, 0, 0, 4, 2, 0, 1, 8, 0))
+  puzzle4.set(8, Array(0, 0, 0, 7, 0, 5, 0, 2, 6))
+  puzzle4.set(8, Array(1, 0, 0, 9, 0, 4, 0, 0, 0))
+  puzzle4.set(8, Array(0, 5, 0, 0, 0, 0, 0, 4, 0))
+  puzzle4.set(8, Array(0, 0, 0, 5, 0, 7, 0, 0, 9))
+  puzzle4.set(8, Array(9, 2, 0, 1, 0, 8, 0, 0, 0))
+  puzzle4.set(8, Array(0, 3, 4, 0, 5, 9, 0, 0, 0))
+  puzzle4.set(8, Array(5, 0, 7, 0, 0, 0, 0, 0, 0))
+
+//  030050040
+//  008010500
+//  460000012
+//  070502080
+//  000603000
+//  040109030
+//  250000098
+//  001020600
+//  080060020
+//
+//  020810740
+//  700003100
+//  090002805
+//  009040087
+//  400208003
+//  160030200
+//  302700060
+//  005600008
+//  076051090
+
 }

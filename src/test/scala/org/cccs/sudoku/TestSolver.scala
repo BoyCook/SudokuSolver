@@ -13,11 +13,27 @@ import org.scalatest.junit.JUnitRunner
 @RunWith(classOf[JUnitRunner])
 class TestSolver extends FunSuite {
 
-  test("should work") {
+  test("should work for puzzle 2") {
     new TestData {
       val solver = new Solver(puzzle2)
       solver.solve
       println(puzzle2)
+    }
+  }
+
+  test("should work for puzzle 3") {
+    new TestData {
+      val solver = new Solver(puzzle3)
+      solver.solve
+      println(puzzle3)
+    }
+  }
+
+  test("should work for puzzle 4") {
+    new TestData {
+      val solver = new Solver(puzzle4)
+      solver.solve
+      println(puzzle4)
     }
   }
 }
