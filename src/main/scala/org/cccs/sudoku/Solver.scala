@@ -12,11 +12,10 @@ class Solver(puzzle: Puzzle) {
    */
   def solve = {
     def loop(x: Int, y: Int, solved: Boolean): Boolean = {
-      val result = solveSquare(x, y)
       if (x == 8 && y == 8 && solved) true
       else if (x == 8 && y == 8 && !solved) loop(0, 0, true)
-      else if (x == 8) loop(0, y + 1, if (!result) false else solved)
-      else loop(x + 1, y, if (!result) false else solved)
+      else if (x == 8) loop(0, y + 1, if (!solveSquare(x, y)) false else solved)
+      else loop(x + 1, y, if (!solveSquare(x, y)) false else solved)
     }
     loop(0, 0, true)
   }
@@ -54,5 +53,3 @@ class Solver(puzzle: Puzzle) {
     if (puzzle.get(x, y) == 0) check(1, List()) else true
   }
 }
-
-
