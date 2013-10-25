@@ -17,6 +17,7 @@ class TestSolver extends FunSuite {
     new TestData {
       val solver = new Solver(puzzle2)
       solver.solve
+      println(puzzle2)
     }
   }
 }
